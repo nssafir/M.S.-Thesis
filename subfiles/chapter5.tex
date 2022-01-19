@@ -1,0 +1,16 @@
+\documentclass[./dissertation.tex]{subfiles}
+
+\begin{document}
+
+    \contentchapter{Methodology}
+    \section{MLVAE Architecture}
+    - We just use the training routine of the VAE but add the metric loss to the loss function \\
+    - Metric losses we are using: triplet loss, supervised contrastive loss, other loss function, moran's I (maybe), geodesic metric loss (also maybe)
+    - Other Implementation quirks: how we need to adjust training routine bc metric losses need greater batch sizes than vae loss, etc.
+    \section{MLVAE Loss Functions}
+    \section{Computing the Geodesic Loss}
+    \section{Evaluation of Latent Space}
+    - Use an MLP or kNN classifier \\
+    - Discussion other measures 
+    
+\end{document}

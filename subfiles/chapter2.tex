@@ -1,27 +1,42 @@
 \documentclass[./dissertation.tex]{subfiles}
-
+\usepackage{amsfonts}
 \begin{document}
 
-    \contentchapter{All about Citations and BibTex}
-    
-    Before diving into BibTex and how it all works, citing a figure or table that does not exist in the same subpage is also possible. Figure ~\ref{fig:terrifrick} is on page ~\pageref{fig:terrifrick}.
-    
-    \section{The Bibliography}
-      In this section, we are going to dive into how LaTeX automates your citations and generates your bibliography on the fly. That way if you make any additions or deletions, LaTeX will handle all of that.
-      \subsection{BibTex File Formatting}
-        All of the citations will live in one file, in this case is called dissertation.bib. This file will have to follow a specific format. Each entry will start with an @ and following the type of entry. If it is a book, then it will start with @book\{...\}. Inside the brackets will contain all of the information about this entry. Fisrt it will have an ID that you will use to cite inside the tex files. Not sure of a convention, but each ID must be unique so something that pertains to the entry should suffice. There is a lot you can put with each entry, so \href{https://www2.cs.arizona.edu/~collberg/Teaching/07.231/BibTeX/bibtex.html}{here} is a link to all the different types and the different attributes each entry can have. Each attribute inside the curly brackets needs to be separated by a comma, but each entry just needs to be on its own line and not separated by a comma.
-      \subsection{Loading BibTex File}
-        If you look at the main file, \textit{disseration.tex}, there are two places that involve the bibliography. First is at the top where the command is \verb+\usepackage[backend=biber,style=apa,sorting=nyt]{biblatex}+. This lets you change the style and how the bibliography is sorted. Don't touch the \textit{backend=biber}. The next command is \verb+\addbibresource{dissertation.bib}+ further down before the actual document begins. This does not neet to be touched because it also needs to be called the same as the main file, besides the extention. This is how the compiler knows which file to grab.
 
-        Then lets take a look at the very bottom of \textit{dissertation.tex}, there will be two commands that are very important.
-        \begin{verbatim}
-          \addcontentsline{toc}{chapter}{Bibliography}
-          \printbibliography[title={Bibliography}]
-        \end{verbatim}
-        Unless you want to change the title of the bibliography or sort the bibliography, then you may want to touch this. Other than that, there is no need to mess with these two lines of the file.
-
-    \section{Inline Citations}
-    There are two commands that you will need to know. \verb+\cite & \parencite+. The way these are used is when you use these commands, you need to have provide the ID of the specific entry in the bib file. \verb+\cite{article1}+ produces \cite{article1} where as the other command adds parentheses around it. These will change when you change the style of the Bibliography from apa to mla or any other format.
-    \parencite{article1}
-    \parencite{article2}
+    \contentchapter{Metric Learning}
+    
+    \section{Metric Learning as Representation Learning}
+    It is a paramount for almost all tasks within the field of machine learning to build meaningful representations of the data. For instance, a representation of data is required for regression, classification, and clustering tasks. Multilayer perceptons model and other neural network models create successive representations of the input data before producing the output. Bengio defines representation learning as "learning representations of the data that make it easier to extract useful information when building classifiers or other predictors." \cite{bengio2013representation}\\
+    
+    Metric learning can thus be thought of as a type of representation learning, as in metric learning an embedding space is learned where similar samples are close together and dissimilar samples are far apart. The representation of data in a metric learning system is the latent representation of the data points. 
+    \section{Metric Learning Overview}
+    Metric learning attempts to create representations for data by training against the similarity or dissimilarity of samples. In a more technical sense, there are two notable functions in a metric learning system. Function $f$ is a neural network which maps the input data $X$ to the latent points $Z$ (i.e. $f_{\theta}: X \mapsto Z$, where $\theta$ is the network parameters). Generally, $Z$ exists in a space of much lower dimensionality than $X$ (eg. $X$ is a set of 28x28 pixel pictures and $Z \in \mathbb{R}^{10}$).\\
+    
+    The function $D(f_{\theta}(x_{1}), f_{\theta}(x_{2}))$ represents the distance between two inputs $x_{1}, x_{2} \in X$. To create a useful embedding model $f_{\theta}$, we would like for $f_{\theta}$ to produce large values of $D(f_{\theta}(x_{1}), f_{\theta}(x_{2}))$ when $x_{1}$ and $x_{2}$ are dissimilar and for $f_{\theta}$ to produce small values of $D(f_{\theta}(x_{1}), f_{\theta}(x_{2}))$ when $x_{1}$ and $x_{2}$ are similar.\
+    
+    It is common for the $l_{2}$ metric to be used as a distance function in metric learning. The generalized $l_p$ metric can be defined as follows, where $z_{0}, z{1} \in \mathcal{R}^{d}$.
+          \begin{equation*}
+            D(z_{0}, z_{1})= || z_{0} - z_{1} ||_{p} =
+            (\sum_{i=1}^d | z_{0} - z_{1} |^{p})^{1/p} 
+          \end{equation*}
+    
+    As the architecture of $f_{\theta}$ (a neural network) and the distance function $D$ (the $l_{2}$ metric) have been standardized, the most important remaining component in a metric learning system is the loss function for training $f$. The following section provides a survey of the development of and differences between notable training objectives in metric learning, which for brevity we will refer to as \textit{metric loss functions} or \textit{metric losses}.
+    
+    \section{Survey of Metric Loss Functions}
+    \subsection{Naive metric learning}
+    Ask meekail what exactly this means
+    \subsection{Contrastive Metric Losses}
+    Contrastive metric losses encourage samples $x_{1}, x_{2}$ to have a small value $D(f_{\theta}(x_{1}), f_{\theta}(x_{2}))$ if $y_1 \eq y_2$ and for  $D(f_{\theta}(x_{1}), f_{\theta}(x_{2}))$ to have a large value if $y_1 \neq y_2$. In other words, contrastive metric losses encourage similar samples or samples of the same class to be close together or dissimilar samples or samples of different classes to be far apart. It may seem confusing at this stage how this goal of \textit{contrastive} metric losses is distinct from the goal of metric learning more generally. This makes more sense in relation to class-based metric losses, ... \\
+    
+    One of the first contrastive metric losses is contrastive loss. \\ 
+    
+    Triplet loss (can take from paper) \\
+    
+    N-pair \\
+    \subsection{Class Based Metric Losses}
+    Issues with contrastive (cite survey)
+    What is class based losses
+    explain center loss
+    supervised contrastive loss (despite the name)
+    how state of the art approaches differ
 \end{document}

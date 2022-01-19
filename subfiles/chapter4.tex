@@ -2,7 +2,12 @@
 
 \begin{document}
 
-    \contentchapter{Enter Title Here}
+    \contentchapter{Related Literature}
+    We have seen other attempts at incorporating labelled information into the variational autoencoder framework. For instance, in Caputring Label Characteristics in VAEs \cite{joy2020capturing}, the authors propose a model which encodes several latent vectors $z_{1}, z_{2}, ... z_{n}$ for $n$ labelled characteristics of the image. For instance, if the dataset was over pictures of people, one characteristic may be if the person was smiling, if they were blonde, etc. For each characteristic $c_{i}$, a classifier is trained to predict $y_{i}$ from only the latent vector $z_{i}$. 
+
+Other approaches to incorporating labelled data into VAEs use a metric loss to govern the latent space more explicitly. In Deep Variational Metric Learning \cite{lin2018deep}, the authors model the intra-class invariance (i.e. the class-related information of a data point) and intra-class variance (i.e. the distinct features of a data point not unique to it's class) seperately. Like several other models in this section, this paper's proposed model incorporates a metric loss term for the latent vectors representing intra-class invariance and the latent vectors representing both intra-class invariance and intra-class variance.
+
+In ``Deep variational metric learning for transfer of expressivity in multispeaker text to Speech'' \cite{kulkarni2020deep} the authors incorporate labelled information into the VAE methodology in two ways. First, a modified architecture called the CVAE is used in which the encoder and generator of the VAE is not only conditioned on the input $X$ and latent vector $z$, respectively, but also on the label $Y$. The CVAE was introduced in previous papers \cite{sohn2015learning} \cite{dahmani2019conditional}. Second, the authors add a metric loss, specifically a multi-class N-pair loss \cite{sohn2016improved}, in the overall loss function of the model. While it is unclear how the CVAE technique would be adapted in a semi-supervised setting, as there is not a label $Y$ associated with each datapoint $X$, we do add a metric loss to the overall model loss function (albeit a different metric loss).
     
     \lipsum[7]
     
