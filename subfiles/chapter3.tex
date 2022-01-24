@@ -5,10 +5,14 @@
     \contentchapter{Variational Autoencoders and Metric Learning}
 
     \section{Overview of Variational Autoencoders}
+    Contextualizing why I'm talking about VAEs
     \subsection{VAEs as a Generative Model}
-    \subsection{VAEs as an Autoencoder}
+    Variational Autoencoders (VAEs) can be thought of as a type of generative model. There are several ways to define and think about generative models. One way to consider generative models is that a generative model is a function $g$ which maps an input $X \in \mathcal{R}^{n}$ back to the space $\mathcal{R}^{n}$ (i.e. $g: \mathcal{R}^{n} \to \mathcal{R}^{n}$) such that the functions output is a reconstruction of the input ($g(X) = \hat{X}$). This explanation may not be applicable to all generative models (for instance, GANs do not reconstruct specific inputs though can be said to reconstruct training data), but is applicable to VAEs and helps provide an intutition for the broad goals of generative models.  \\
+    
+    Another way to describe generative models is a class of models which attempt to approximate the distribution of input data $P(X)$. For instance, one may attempt to approximate the distribution of all pictures of dogs $P(X_{dog})$ with a generative model. If the generative model is successful, one can approximately sample from $P(X_{dog})$ through the generative model. However, the challenge in this approach is that many classes of inputs, including images, are very high-dimensional, and thus it is difficult to learn it's distribution. For instance, a picture of a dog may be 256 pixels in both length and width and have 3 channels per pixel, in which case $X_{dog} \in \mathcal{R}^{256 \times 256 \times 3}$. It is clearly very difficult to learn a probability distribution of dimensionality ${256 \times 256 \times 3}$, so generative models must learn "tricks" to contend with this dimensionality problem. VAEs, as we will discuss in the next section, use the architecture of the variational autoencoder to map the inputs to lower dimensional representations that are easier to model as distributions. 
+    \subsection{VAEs as Autoencoders}
     \subsection{The VAE Objective Function}
-    \subsection{The VAE Prior Distribution}
+    \subsection{The VAE Prior Distribution and VampPrior}
 
     \section{Combining Variational Autoencoders and Metric Learning}
     See above claims
