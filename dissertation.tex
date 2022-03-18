@@ -17,7 +17,6 @@
 \else
     \documentclass[12pt, notitlepage, oneside]{report}
 \fi
-
 % Document Preamble Metafiles (Do Not Reorder!) ============================== %
 \input{metafiles/preamble.tex}
 
@@ -29,18 +28,18 @@
 % \figuresfalse
 \tablestrue
 % \tablesfalse
-
+\usepackage{algorithm2e}
 \begin{document}
 
 % Title and Author Settings ================================================ %
-\newcommand{\doctitle}{Your Dissertation Title Will Go Here}
+\newcommand{\doctitle}{Variational Autoencoders for Semi-Supervised Deep Metric Learning}
 \newcommand{\docauthor}{Nathan Safir}
 
 
 %--------------------------ABSTRACT---------------------------%
 \input{metafiles/abstractpage.tex}
 \doublespacing{\makeabstract{%
-This section of the page is where your abstract will go. Fill in this spot in the dissertation.tex file with your abstract. Doctoral 350 words max, 150 max for masters.
+Metric learning methods generally do not incorporate unlabelled data. We propose performing deep metric learning (DML) on the latent space of the variational autoencoder (VAE) so that the DML task can be jointly optimized with the VAE to incorporate unlabelled data. We test this approach across recent metric losses and experimentally evaluate two atomic benefits to the performing DML on the VAE latent space: the enhanced ability to train using unlabelled data and to induce bias given prior knowledge.
 }}%
 
 
@@ -88,12 +87,9 @@ This section of the page is where your abstract will go. Fill in this spot in th
   Ron Walcott\\
   Dean of the Graduate School\\
   The University of Georgia\\
-  MONTH YEAR
+  March 2022
 \end{flushleft}
 \vspace*{1.5cm}
-
-% Dedication ============================================================== %
-\subfile{subfiles/dedication}
 
 % Acknowledgements ======================================================== %
 \subfile{subfiles/acknowledgements}
@@ -118,6 +114,7 @@ This section of the page is where your abstract will go. Fill in this spot in th
 
 \clearpage
 \pagenumbering{arabic}
+\doublespacing{
 
 % Document Body =========================================================== %
 % ------------------------------------------------------------------------- %
@@ -139,5 +136,5 @@ This section of the page is where your abstract will go. Fill in this spot in th
 \newpage
 \addcontentsline{toc}{chapter}{Bibliography} %add bib to the TOC
 \printbibliography[title={Bibliography}]
-
+}
 \end{document}
