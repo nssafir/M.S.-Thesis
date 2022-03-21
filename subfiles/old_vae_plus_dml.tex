@@ -1,0 +1,16 @@
+\section{Combining Variational Autoencoders and Metric Learning}
+    We present metric learning as a mechanism for cluster regularization in VAEs. To do this, we borrow from metric learning in creating a training sub-routine to augment the standard VAE training process. Specifically, the standard VAE loss of 
+    \begin{equation*}
+    \mathcal L(x)=\|x-\hat x\|^2+KL(q(z|x)\|p(z))    
+    \end{equation*}
+    is augmented to 
+    \begin{equation*}
+    \hat{\mathcal L}(x)=\mathcal{L}(x)+\mathcal{R}_p(x)    
+    \end{equation*}
+    where $\mathcal{R}_p(x)$ is a metric loss. We argue that adding a metric loss term within a the VAE provides theoretical advantages to a traditional metric learning system with respect to the clustering latent representations of a semi-supervised dataset for two reasons. This modified VAE can be viewed as both a modification of a VAE which can incorporate labelled data \emph{or} as a new metric form of metric loss which benefits from unsupervised data. We take the latter perspective to propose and experimentally evaluate claims regarding the Metric VAEs benefits.
+    
+    We hypothesize that adding a metric loss term within the VAE provides theoretical advantages to a traditional metric learning system with respect to the clustering latent representations of a semi-supervised dataset for two reasons. 
+
+    First, metric learning systems and VAEs both contain encoder functions $f$, but only VAEs contain a decoder function $g$. Having a decoder function $g$ allows us to compute a reconstruction error between the input $X$ and the reconstruction $\hat x=f(g(x))$. We claim that this reconstruction error helps clustering of unlabelled data because as while the decoder learns which areas of the latent space correspond to output phenoytpes, the encoder learns where data should be mapped to in the latent space, meaning data that appears to be similar is mapped closer together in latent space. Additionally, the presence of the decoder function $g$ allows us to build reconstructions of points in the latent space, which is a functionality that may be helpful to experts using the system.
+    
+    Second, latent points in metric learning systems are not constrained by a prior, while latent points in VAEs are. Specifically, the latent points are sampled from the posterior distributions; the distance between the posterior distributions and the prior distribution is minimized through the KL divergence term of VAE loss function. We have shown that the prior can be not only the unit Gaussian, but a mixture of $n$ gaussians created dynamically as the posteriors of $n$ pseudo-inputs. We claim that by modifying the prior, we can induce biases in the prior based on what we know about the dataset to encourage more accurate clustering patterns. For instance, knowing that there are $n$ many classes in a dataset (i.e. $n=10$ for the MNIST handwritten digets dataset), a prior distribution consisting of $n$ gaussians may best capture the underlying structure of the data. This hypothesis is also tested experimentally in section 5.
