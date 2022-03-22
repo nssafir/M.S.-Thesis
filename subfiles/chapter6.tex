@@ -100,7 +100,75 @@
    
    The data looks to show that the claim that adding a reconstruction loss to a DML system can improve the quality of clustering in the latent representations on a semi-supervised dataset when there are small amounts (roughly less than 100 samples) of labelled data \textit{and} a sufficient quantity of unlabelled data. But an important caveat is that it is not convincing that the metric autoencoder effectively combined the unsupervised and supervised losses to create a superior model, as a plain autoencoder (i.e. the Metric Autoencoder with $\alpha = 1$) outperforms the DML for the partial labels percentage of or less than 0.1\% and underperforms the DML for the partial labels percentage of 10\%. \\
    
-   TODO: Make and Discuss results for MedMNIST dataset
+   In the table for the MedMNIST dataset, we see very similar trends of the performance increasing greatly with increasing the latent space dimensionality, the DML performance improving greatly while the MetricAutoencoder performance improves ony somewhat with the amount of labelled data, and the alpha of the MetricAutoencoder having a relatively small impact. Overall, it does not appear that medMNIST is a drastically more difficult dataset with regards to model performance (it is somewaht confounding why the DML performance on $pl\% = 0.01$ is much better on this dataset than on MNIST). The results on the MedMNIST datset thus strengthen the above evaluation of claim 1.
+   
+      \begin{table}[]
+       \centering
+       \begin{tabular}{|c|c|c|c|}
+            \hline
+            \textbf{pl\%} & \textbf{lsdim} & \textbf{knn acc} & \textbf{knn MI}  \\
+            \hline
+            0.01 & 2 & 0.3941 & 0.2651 \\
+            & & & \\ 
+            & & & \\ 
+            & & & \\ 
+            & 10 & \textbf{0.6997} & \textbf{0.5537} \\ 
+            & & & \\ 
+            & & & \\ 
+            & & & \\ 
+            0.1 & 2 & 0.4286 & 0.3135 \\
+            & & & \\ 
+            & & & \\ 
+            & & & \\ 
+            & 10 & \textbf{0.8212} & \textbf{0.6981} \\ 
+            & & & \\ 
+            & & & \\ 
+            & & & \\
+            10 & 2 & 0.4625 & 0.3653 \\
+            & & & \\ 
+            & & & \\ 
+            & & & \\ 
+            & 10 & \textbf{0.8395} & \textbf{0.7227} \\ 
+            & & & \\ 
+            & & & \\ 
+            & & & \\
+            \hline
+       \end{tabular}
+        \begin{tabular}{|c|c|c|c|c|}
+            \hline
+            \textbf{pl\%} & \textbf{alpha} & \textbf{lsdim} & \textbf{knn acc} & \textbf{knn MI}  \\
+            \hline
+            0.01 & 0.25 & 2 & 0.3629 & 0.2695 \\
+             &  & 10 & 0.8047 & 0.6686 \\
+             & 0.5 & 2 & 0.3347 & 0.2122 \\
+             &  & 10 & \textbf{0.8347} & \textbf{0.7172} \\
+             & 0.75 & 2 & 0.3419 & 0.2183 \\
+             &  & 10 & 0.7546 & 0.6012 \\
+             & 1 & 2 & 0.3941 & 0.2651 \\
+             &  & 10 & 0.6997 & 0.5537 \\
+            0.1 & 0.25 & 2 & 0.3656 & 0.2494 \\
+             &  & 10 & 0.8548 & 0.7449 \\
+             & 0.5 & 2 & 0.4220 & 0.2824 \\
+             &  & 10 & 0.8557 & 0.7412 \\
+             & 0.75 & 2 & 0.3947 & 0.2620 \\
+             &  & 10 & \textbf{0.8638} & \textbf{0.7508} \\
+             & 1 & 2 & 0.4286 & 0.3135 \\
+             &  & 10 & 0.8212 & 0.6981 \\
+            10 & 0.25 & 2 & 0.4403 & 0.3388 \\
+             &  & 10 & 0.8557 & 0.7392 \\
+             & 0.5 & 2 & 0.3857 & 0.2459 \\
+             &  & 10 & \textbf{0.8677} & \textbf{0.7554} \\
+             & 0.75 & 2 & 0.5014 & 0.3812 \\
+             &  & 10 & 0.8242 & 0.7068 \\
+             & 1 & 2 & 0.4625 & 0.3653 \\
+             &  & 10 & 0.8395 & 0.7227 \\
+            \hline
+       \end{tabular}
+       \caption{Comparison of the DML (left) and MetricAutoencoder (right) models for the OrganAMNIST dataset. Bolded values indicate best performance for each partial labels percentage partition (pl\%).\\}
+       \label{tab:my_label}
+   \end{table}
+   
+   
     \section{Claim 2: Incorporating Inductive Bias with Prior}
     In evaluating the second claim, we compare the performance of the plain DML model to the DML with a unit prior and a DML with a GMM prior. We also compare the performance to a DML with a VampPrior. Gaging the performance of a DML with a learnable prior like a VampPrior is not as key to evaluating whether inductive bias can be incorporated because the VampPrior not only incorporates inductive bias but adds complexity, while the unlearned priors only incorporate inductive bias. However, we still run experiments with the DML with VampPrior as we feel it is in line with this thesis' goals to assess how components of VAE and modified VAE models can augment and improve the standard DML model. \\ 
     - Assign each cluster to a psuedoinput using KNN. Then plot the percentages of each class within each pseudoinput for each pseudoinput. Measure the homogenity for each pseudoinput to see if relationship between that and mutual inforamtion score.
