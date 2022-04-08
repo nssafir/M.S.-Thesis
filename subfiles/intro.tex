@@ -1,0 +1,26 @@
+\documentclass[./dissertation.tex]{subfiles}
+\usepackage{changepage}
+
+\begin{document} 
+    \vspace{3in}
+    \contentchapter{Introduction}
+    The thesis looks to explore how components of the variational autoencoder can improve the performance of deep metric learning tasks. Chapter two will review previous literature which researches similar or adjacent problems in semi-supervised metric learning and variational autoencoders. Chapters three and four will give a greater overview of metric learning and variational autoencoders, respectively. Chapter five will introduce a methodology to evaluate the claims we make about how components of the variational autoencoder can be used to extend deep metric learning models to train with unlabelled data. Chapter six will provide the results of our proposed methods, and chapter seven will discuss what we can learn from these results and how this line of research can be extended further. The remainder of this chapter gives a brief overview of the motivation and goals for this research. 
+
+    \section{Motivation}
+    Within the broader field of representation learning, metric learning is an area which looks to define a distance metric which is smaller between similar objects (such as objects of the same class) and larger between dissimilar objects. Oftentimes, a map is learned from inputs into a low-dimensional latent space where euclidean distance exhibits this relationship, encouraged by training said map against a loss (cost) function based on the euclidean distance between sets of similar and dissimilar objects in the latent space. Existing metric learning methods are generally unable to learn from unlabelled data, which is problematic because unlabelled data is often easier to obtain and is potentially informative.
+
+    \section{Objective}
+    We take inspiration from variational autoencoders (VAEs), a generative representation learning architecture, for using unlabelled data to create accurate representations. Specifically, we look to evaluate three atomic claims that detail how pieces of the VAE architecture can create a better deep metric learning (DML) model on a semi-supervised dataset. From here, we can ascertain which specific qualities of how VAEs process unlabelled data are most helpful in modifying DML methods to train with semi-supervised datasets. \\
+    
+    First, we propose that the autoencoder structure of the VAE helps the clustering of unlabelled points, as the reconstruction loss may help incorporate semantic information from unlabelled sources. Second, we claim that the structure of the VAE latent space, as it is confined by a prior distribution, can be used to induce bias in the latent space of a DML system. For instance, if we know a dataset contains $N$-many classes, creating a prior distribution that is a learnable mixture of $N$ gaussians may help produce better representations. Third, we claim that performing DML on the latent space of the VAE so that the DML task can be jointly optimized with the VAE to incorporate unlabelled data may help produce better representations. \\
+    
+    Each of the three claims will be evaluated experimentally. The claims will be evaluated by comparing a standard DML implementation to the same DML implementation
+    \begin{itemize}
+        \item jointly optimized with an autoencoder
+        \item while structuring the latent space around a prior distribution using the VAE’s KL-divergence loss term between the approximated posterior and prior
+        \item jointly optimized with a VAE
+    \end{itemize}
+    
+    Our primary contribution is evaluating these three claims. Our secondary contribution is presenting the results of the joint approaches for VAEs and DML for more recent metric losses that have not been jointly optimized with a VAE in previous literature. 
+
+\end{document}

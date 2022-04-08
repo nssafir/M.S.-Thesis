@@ -2,9 +2,17 @@
 
 \begin{document}
 
-    \contentchapter{Conclusion}
+    \contentchapter{Conclusion and Future Work}
+    \section{Conclusion}
+    
+    In this work, we have set out to determine how DML can be extended for semi-supervised datasets by borrowing components of the variational autoencoder. We have formalized this approach through defining three specific claims. To evaluate each claim, we have created several variations of the DML model, such as the DML Autoencoder, DML with Unit/GMM Prior, and MVAE. We then tested the performance of the models across several semi-supervised partitions of two datasets, along with other configurations of hyperparameters.  \\
+    
+    We have determined from the analysis of our results, there is too much dissenting data to clearly accept any three of the claims. For claim 1, while the DML Autoencoder outperforms the DML for semi-supervised datasets with small amounts of labelled data, it's peformance is not consistently much better than that of a plain autoencoder which uses no labelled data. For claim 2, each of the DML models with an added prior performed extremely poorly, near or at the level of the null model. For claim 3, we see the same extremely poor performance from the MVAE models. 
+    
     \section{Future Work}
     
-    \lipsum[7]
+    In the future, it would be worthwhile to evaluate these claims using a different training routine. We have stated previously that perhaps the extremely poor performance of the DML with a prior and MVAE models may be due to the training regimen of alternating on training against a supervised and unsupervised loss. Further research could look to develop or compare several different training regimens. One alternative would simply be to keep alternating between losses but at the level of each batch instead of each epoch. The paper "High-Dimensional Bayesian Optimisation with Variational Autoencoders and Deep Metric Learning", for example, (\cite{grosnit2021high}) has defined a more complex training routines to balance the DML and unsupervised loss. If this line of research is pursued, it may be worthwhile to review the field of auxiliary task learning, in which a model trains against an additional task or tasks, to find a solution to how to optimize the training routine of the modified DML models. \\
+    
+    Another potentially interesting avenue for future study is in investigating a fourth claim for a possible benefit to combining DML and VAE methodology: the ability to define a Riemannian metric on the latent space. Previous research has shown a Riemannian metric can be computed on the latent space of the VAE by computing the pull-back metric of the VAE's decoder function (\cite{arvanitidis2020geometrically}). Through the Riemannian metric we could calculate metric losses such as triplet loss with a geodesic instead of euclidean distance. The geodesic distance may be a more accurate representation of similarity in the latent space than euclidean distance as it accounts for the structure of the input data. 
     
 \end{document}

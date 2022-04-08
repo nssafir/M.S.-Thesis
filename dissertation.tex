@@ -39,7 +39,7 @@
 %--------------------------ABSTRACT---------------------------%
 \input{metafiles/abstractpage.tex}
 \doublespacing{\makeabstract{%
-Metric learning methods generally do not incorporate unlabelled data. We propose performing deep metric learning (DML) on the latent space of the variational autoencoder (VAE) so that the DML task can be jointly optimized with the VAE to incorporate unlabelled data. We test this approach across recent metric losses and experimentally evaluate atomic benefits to the performing DML on the VAE latent space such as the enhanced ability to train using unlabelled data and to induce bias given prior knowledge.
+Deep metric learning (DML) methods generally do not incorporate unlabelled data. We propose performing borrowing components of the variational autoencoder (VAE) methodology to extend DML methods to train on semi-supervised datasets. We experimentally evaluate atomic benefits to the performing DML on the VAE latent space such as the enhanced ability to train using unlabelled data and to induce bias given prior knowledge.
 }}%
 
 
@@ -89,9 +89,9 @@ Metric learning methods generally do not incorporate unlabelled data. We propose
 \begin{flushleft}
   Electronic Version Approved:\\[12pt]
   Ron Walcott\\
-  Dean of the Graduate School\\
+  Vice Provost for Graduate Education and Dean of the Graduate School\\
   The University of Georgia\\
-  March 2022
+  May 2022
 \end{flushleft}
 \vspace*{1.5cm}
 
@@ -122,19 +122,19 @@ Metric learning methods generally do not incorporate unlabelled data. We propose
 
 % Document Body =========================================================== %
 % ------------------------------------------------------------------------- %
-\subfile{subfiles/chapter1}
-\subfile{subfiles/chapter2}
-\subfile{subfiles/chapter3}
-\subfile{subfiles/chapter4}
-\subfile{subfiles/chapter5}
-\subfile{subfiles/chapter6}
+\subfile{subfiles/intro}
+\subfile{subfiles/lit}
+\subfile{subfiles/ml}
+\subfile{subfiles/vae}
+\subfile{subfiles/methodology}
+\subfile{subfiles/results}
 \subfile{subfiles/conclusion}
 % ------------------------------------------------------------------------- %
 % ========================================================================= %
 
 
 %-----------------------APPENDICES----------------------------%
-\subfile{subfiles/appendices}
+%\subfile{subfiles/appendices}
 
 %-----------------------BIBLIOGRAPHY---------------------------%
 \newpage
