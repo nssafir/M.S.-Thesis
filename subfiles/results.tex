@@ -69,9 +69,9 @@
              & 0.5 & 2 & 0.3314 & 0.1881 \\
              &  & 10 & 0.6688 & 0.5216 \\
              & 0.75 & 2 & 0.3107 & 0.1878 \\
-             &  & 10 & \textbf{0.8347} & 0.7054 \\
+             &  & 10 & 0.8347 & 0.7054 \\
              & 1 & 2 & 0.4115 & 0.2894 \\
-             &  & 10 & 0.8377 & \textbf{0.7182} \\
+             &  & 10 & \textbf{0.8377} & \textbf{0.7182} \\
             0.1 & 0.25 & 2 & 0.4322 & 0.3329 \\
              &  & 10 & 0.8761 & 0.7676 \\
              & 0.5 & 2 & 0.4169 & 0.3166 \\
@@ -337,9 +337,9 @@
    
    \begin{figure}
        \centering
-       \includegraphics[width=.48\textwidth]{figures/gmm_lsdim4.png}
-       \includegraphics[width=.48\textwidth]{figures/unit_lsdim4.png}
-       \caption{Comparison of latent spaces for DML with GMM prior with 16 components (left) and GMM with unit prior (right) for $lsdim = 4$. There appears to be no evidence of the distinct gaussian components in the latent space on the left.}
+       \includegraphics[width=.48\textwidth]{figures/1_component.PNG}
+       \includegraphics[width=.48\textwidth]{figures/4_components.PNG}
+       \caption{Comparison of latent spaces for DML with unit prior (left) and DML with GMM prior containing 4 components (right) for $lsdim = 2$ on OrganAMNIST dataset. The gaussian components are shown as black with the raidus equal to variance (1). There appears to be no evidence of the distinct gaussian components in the latent space on the right. It does appear that the unit prior may regularize the magnitude of the latent vectors.}
        \label{fig:my_label}
    \end{figure}
    
@@ -355,42 +355,42 @@
             \textbf{DML} &
             \textbf{MVAE}\\
             \hline
-            MNIST & 0.01 & 2 & 0.25 & 0.2603 & 0.1025 & 0.3167 & 0.1052 & & \\
-             & 0.01 & 2 & 0.50 & & 0.1049 & & 0.2699 & & \\
-             & 0.01 & 2 & 0.75 & & 0.1004 & & 0.1055 & & \\
-             & 0.01 & 2 & 1.00 & & 0.1115 & & 0.1022 & & \\
-             & 0.01 & 10 & 0.25 & 0.2678 & 0.1028 & 0.5281 & 0.0947 & & \\
-             & 0.01 & 10 & 0.50 & & 0.0923 & & 0.2630 & & \\
-             & 0.01 & 10 & 0.75 & & 0.1037 & & 0.1040 & & \\
-             & 0.01 & 10 & 1.00 & & 0.1067 & & 0.1040 & & \\
-             & 10 & 2 & 0.25 & 0.4625 & 0.1109 & 0.1103 & 0.1028 & & \\
-             & 10 & 2 & 0.50 & & 0.0992 & & 0.1073  & & \\
-             & 10 & 2 & 0.75 & & 0.1031 & & 0.1022 & & \\
-             & 10 & 2 & 1.00 & & 0.0890 & & 0.0920 & & \\
-             & 10 & 10 & 0.25 & 0.8395 & 0.1025 & 0.9370 & 0.1010 & & \\
-             & 10 & 10 & 0.50 & & 0.1025 & & 0.0932 & & \\
-             & 10 & 10 & 0.75 & & 0.1058 & & 0.1043 & & \\
-             & 10 & 10 & 1.00 & & 0.0950 & & 0.1076 & & \\
+            MNIST & 0.01 & 2 & 0.25 & 0.2603 & 0.1025 & 0.3167 & 0.1052 & 0.1889 & 0.1001 \\
+             & 0.01 & 2 & 0.50 & & 0.1049 & & 0.2699 & & 0.1034 \\
+             & 0.01 & 2 & 0.75 & & 0.1004 & & 0.1055 & & 0.1064 \\
+             & 0.01 & 2 & 1.00 & & 0.1115 & & 0.1022 & & 0.1004 \\
+             & 0.01 & 10 & 0.25 & 0.2678 & 0.1028 & 0.5281 & 0.0947 & 0.5509  & 0.1064 \\
+             & 0.01 & 10 & 0.50 & & 0.0923 & & 0.2630 & & 0.0995 \\
+             & 0.01 & 10 & 0.75 & & 0.1037 & & 0.1040 & & 0.1076 \\
+             & 0.01 & 10 & 1.00 & & 0.1067 & & 0.1040 & & 0.0932 \\
+             & 10 & 2 & 0.25 & 0.4625 & 0.1109 & 0.1103 & 0.1028 & 0.1682 & 0.0992 \\
+             & 10 & 2 & 0.50 & & 0.0992 & & 0.1073  & & 0.10467 \\
+             & 10 & 2 & 0.75 & & 0.1031 & & 0.1022 & & 0.1001 \\
+             & 10 & 2 & 1.00 & & 0.0890 & & 0.0920 & & 0.1010 \\
+             & 10 & 10 & 0.25 & 0.8395 & 0.1025 & 0.9370 & 0.1010 & 0.46430 & 0.0986 \\
+             & 10 & 10 & 0.50 & & 0.1025 & & 0.0932 & & 0.1073 \\
+             & 10 & 10 & 0.75 & & 0.1058 & & 0.1043 & & 0.0947 \\
+             & 10 & 10 & 1.00 & & 0.0950 & & 0.1076 & & 0.1013 \\
              
-             OrganAMNIST & 0.01 & 2 & 0.25 & 0.3941 & 0.1061 & 0.3608 & 0.0911 & & \\
-             & 0.01 & 2 & 0.50 & & 0.0965 & & 0.1019 & & \\
-             & 0.01 & 2 & 0.75 & & 0.0929 & & 0.1076 & & \\
-             & 0.01 & 2 & 1.00 & & 0.1010 & & 0.1055 & & \\
+             OrganAMNIST & 0.01 & 2 & 0.25 & 0.3941 & 0.1061 & 0.3608 & 0.0911 & 0.1967 & 0.1061\\
+             & 0.01 & 2 & 0.50 & & 0.0965 & & 0.1019 & & 0.1010  \\
+             & 0.01 & 2 & 0.75 & & 0.0929 & & 0.1076 & & 0.1097\\
+             & 0.01 & 2 & 1.00 & & 0.1010 & & 0.1055 & & 0.1040 \\
              
-             & 0.01 & 10 & 0.25 & 0.6997 & 0.1175 & 0.4868 & 0.1058 & & \\
-             & 0.01 & 10 & 0.50 & & 0.0929 & & 0.1094 & & \\
-             & 0.01 & 10 & 0.75 & & 0.1091 & & 0.1112 & & \\
-             & 0.01 & 10 & 1.00 & & 0.1091 & & 0.1007 & & \\
+             & 0.01 & 10 & 0.25 & 0.6997 & 0.1175 & 0.4868 & 0.1058 & 0.5422 & 0.1121 \\
+             & 0.01 & 10 & 0.50 & & 0.0929 & & 0.1094 & & 0.0989 \\
+             & 0.01 & 10 & 0.75 & & 0.1091 & & 0.1112 & & 0.1040 \\
+             & 0.01 & 10 & 1.00 & & 0.1091 & & 0.1007 & & 0.0911  \\
              
-             & 10 & 2 & 0.25 & 0.4625 & 0.0968 & 0.6694 & 0.1091 & & \\
-             & 10 & 2 & 0.50 & & 0.0995 & & 0.1067 & & \\
-             & 10 & 2 & 0.75 & & 0.1061 & & 0.0959 & & \\
-             & 10 & 2 & 1.00 & & 0.1043 & & 0.1679 & & \\
+             & 10 & 2 & 0.25 & 0.4625 & 0.0968 & 0.6694 & 0.1091 & 0.2228 & 0.1061 \\
+             & 10 & 2 & 0.50 & & 0.0995 & & 0.1067 & & 0.0965  \\
+             & 10 & 2 & 0.75 & & 0.1061 & & 0.0959 & & 0.1613 \\
+             & 10 & 2 & 1.00 & & 0.1043 & & 0.1679 & & 0.1007 \\
              
-             & 10 & 10 & 0.25 & 0.8395 & 0.0980 & 0.9694 & 0.1091 & & \\
-             & 10 & 10 & 0.50 & & 0.0980 & & 0.1238 & & \\
-             & 10 & 10 & 0.75 & & 0.0974 & & 0.1346 & & \\
-             & 10 & 10 & 1.00 & & 0.1025 & & 0.1076 & & \\
+             & 10 & 10 & 0.25 & 0.8395 & 0.0980 & 0.9694 & 0.1091 & 0.5932 & 0.1094 \\
+             & 10 & 10 & 0.50 & & 0.0980 & & 0.1238 & & 0.1019 \\
+             & 10 & 10 & 0.75 & & 0.0974 & & 0.1346 & & 0.1148 \\
+             & 10 & 10 & 1.00 & & 0.1025 & & 0.1076 & & 0.1088 \\
             \hline
        \end{tabular}
        \caption{Comparison of KNN Accuracy for DML and MetricVAE (MVAE) across metric losses for the MNIST dataset. The DML models do not take any alpha value, so their results are consistent across pl\% and lsdim. The pl\% value of 0.001 is not included as the supervised loss receives a NaN error. }
@@ -409,34 +409,35 @@
     Given our analysis of the data, we see that incorporating the DML loss to the VAE is potentially helpful, but only when training the unsupervised and supervised losses jointly. Even in that case, it is unclear whether the MVAE performs better than the corresponding DML model even if it does perform better than the corresponding VAE model. Alternating between training the model on the unsupervised and supervised objectives is does not appear to be a viable training routine. From the data and our analysis, we are unable to confirm the claim that optimizing a DML model jointly with a VAE on the VAE’s latent space will produce superior clustering than the DML model individually.
     
   \begin{table}
-  \renewcommand{\arraystretch}{1.2}
   \centering
     \label{tab:table1}
-    \begin{tabular}{|c|c|c|c|c|}
-      \multicolumn{2}{l|}{\textbf{\hspace{0.2cm} Architecture Parameters} \hspace{0.2cm}} & \multicolumn{3}{m}{\textbf{Classifier Accuracy (\%)}}\\
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
       \hline
-      \textbf{\hspace{0.4cm}  lsdim  \hspace{0.4cm}} & \textbf{alpha} & \textbf{linear} & \textbf{rf} & \textbf{kNN}\\
+      \multicolumn{2}{|l|}{\textbf{\hspace{0.2cm} Architecture Parameters} \hspace{0.2cm}} & \multicolumn{3}{m|}{\textbf{MVAE Clasif. Accuracy (\%)}} & 
+      \multicolumn{3}{m|}{\textbf{DML Clasif. Accuracy (\%)}}\\
       \hline
-       {} & 0 & 57.8 & 65.2 & 64.6\\ % <-- Combining 2 rows with arbitrary with (*) and content 12
+      \textbf{\hspace{0.4cm}  lsdim  \hspace{0.4cm}} & \textbf{gamma} & \textbf{linear} & \textbf{rf} & \textbf{kNN} & \textbf{linear} & \textbf{rf} & \textbf{kNN}\\
+      \hline
+       {} & 0 & 57.8 & 65.2 & 64.6 & & &\\ % <-- Combining 2 rows with arbitrary with (*) and content 12
       \multirow{2}
-      & 2 & \textbf{75.0} & 69.8 & 70.6\\ % <-- Content of first column omitted.
-      & 5 & 68.8 & 67.9 & 66.9\\
-      & 10 & 51.6 & \textbf{75.4} & \textbf{74.2}\\
+      & 2 & \textbf{75.0} & 69.8 & 70.6 & 95.0 & 94.5 & 95.0\\ % <-- Content of first column omitted.
+      & 5 & 68.8 & 67.9 & 66.9 & & &\\
+      & 10 & 51.6 & \textbf{75.4} & \textbf{74.2} & & &\\
       \hline
-      {} & 0 & 81.3 & 83.9 & 84.5\\ % <-- Combining 2 rows with arbitrary with (*) and content 12
+      {} & 0 & 81.3 & 83.9 & 84.5 & & &\\ % <-- Combining 2 rows with arbitrary with (*) and content 12
       \multirow{5}
-      & 2 & 85.9 & 88.5 & 88.4\\ % <-- Content of first column omitted.
-      & 5 & 82.8 & 88.0 & 88.5\\
-      & 10 & \textbf{89.1} & \textbf{92.0} & \textbf{92.4}\\
+      & 2 & 85.9 & 88.5 & 88.4 & 98.1 & 97.9 & 97.9\\ % <-- Content of first column omitted.
+      & 5 & 82.8 & 88.0 & 88.5 & & &\\
+      & 10 & \textbf{89.1} & \textbf{92.0} & \textbf{92.4} & & &\\
       \hline
-      {} & 0 & 85.9 & 92.1 & 92.7\\ % <-- Combining 2 rows with arbitrary with (*) and content 12
+      {} & 0 & 85.9 & 92.1 & 92.7 & & &\\ % <-- Combining 2 rows with arbitrary with (*) and content 12
       \multirow{10}
-      & 2 & 87.4 & 91.8 & 91.3\\ % <-- Content of first column omitted.
-      & 5 & \textbf{98.4} & \textbf{92.8} & \textbf{93.4}\\
-      & 10 & 93.8 & 92.5 & 91.9\\
+      & 2 & 87.4 & 91.8 & 91.3 & 98.5 & 97.7 & 98.0\\ % <-- Content of first column omitted.
+      & 5 & \textbf{98.4} & \textbf{92.8} & \textbf{93.4} & & &\\
+      & 10 & 93.8 & 92.5 & 91.9 & & &\\
       \hline
     \end{tabular}
-    \caption{Experiments performed on MVAE architecture that trains on objective function $L = L_{U} + \alpha * L_{S}$ on fully supervised dataset. The best results in a given latent-dimensionality are bolded.\\}
+    \caption{Experiments performed on MVAE architecture across fully labelled MNIST dataset that trains on objective function $L = L_{U} + \gamma * L_{S}$ on fully supervised dataset. The best results for the classification accuracy on the MVAE embeddings in a given latent-dimensionality are bolded.\\}
     \end{table}
     
     
