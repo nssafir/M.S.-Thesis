@@ -82,10 +82,10 @@ Semi-Supervised Metric Learning
   different class or in different clusters if they are of the same
   class. This penalty is proportional to the metric distance between the
   pair of inputs. Baghshah and Shouraki
-  (:raw-latex:`\citeyear{baghshah2009semi}`) also looks to impose
+  (:cite:`baghshah2009semi`) also looks to impose
   similar constraints by introducing a loss term to preserve locally
   linear relationships between labelled and unlabelled data in the input
-  space. Wang et al. (:raw-latex:`\citeyear{wang2013semi}`) also use a
+  space. Wang et al. (:cite:`wang2013semi`) also use a
   regularizer term to preserve the topology of the input space. Using
   VAEs, in a sense, draws on this theme: though there is not explicit
   term to enforce that the topology of the input space is preserved, a
@@ -95,11 +95,11 @@ Semi-Supervised Metric Learning
 | One more recent common general approach to this problem is to use the
   unlabelled data’s proximity to the labelled data to estimate labels
   for unlabelled data, effectively transforming unlabelled data into
-  labelled data. Dutta et al. (:raw-latex:`\citeyear{dutta2021semi}`)
+  labelled data. Dutta et al. (:cite:`dutta2021semi`)
   propose a model which uses affinity propagation on a
   k-Nearest-Neighbors graph to label partitions of unlabelled data based
   on their closest neighbors in the latent space. Wu et al.
-  (:raw-latex:`\citeyear{wu2020metric}`) also look to assign
+  (:cite:`wu2020metric`) also look to assign
   pseudo-labels to unlabelled data, but not through a graph-based
   approach. Instead, the proposed model looks to approximate "soft"
   pseudo-labels for unlabelled data from the metric learning similarity
@@ -115,7 +115,7 @@ Semi-supervised VAEs
   training regimen for the VAE which does learn from labels is not
   straightforward. An early solution proposed to this problem are Kingma
   and Welling’s proposed M1 and M2 models
-  (:raw-latex:`\citeyear{kingma2014autoencoding}`). The M1 model trains
+  (:cite:`kingma2014autoencoding`). The M1 model trains
   the VAE on data :math:`X` without the labels :math:`Y` to produce
   encodings :math:`Z` and then trains a separate model on a supervised
   task with the data and labels pair :math:`(Z, Y)`. The M1 model does
@@ -130,7 +130,7 @@ Semi-supervised VAEs
 
 | A more recent approach to the semi-supervised VAEs discourages
   producing an explicit label embedding within the latent space. Joy et
-  al. (:raw-latex:`\citeyear{joy2020capturing}`) propose a model which
+  al. (:cite:`joy2020capturing`) propose a model which
   encodes several latent vectors :math:`z_{1}, z_{2}, ... z_{n}` for
   :math:`n` labelled characteristics of the image. For instance, if the
   dataset was over pictures of people, one characteristic may be if the
@@ -146,7 +146,7 @@ VAEs with Metric Loss
 ++++++++++++++++++++++
 | Some approaches to incorporating labelled data into VAEs use a metric
   loss to govern the latent space more explicitly. Lin et al.
-  (:raw-latex:`\citeyear{lin2018deep}`) model the intra-class invariance
+  (:cite:`lin2018deep`) model the intra-class invariance
   (i.e. the class-related information of a data point) and intra-class
   variance (i.e. the distinct features of a data point not unique to
   it’s class) seperately. Like several other models in this section,
@@ -155,16 +155,16 @@ VAEs with Metric Loss
   vectors representing both intra-class invariance and intra-class
   variance.
 
-| Kulkarni et al. (:raw-latex:`\citeyear{kulkarni2020deep}`) incorporate
+| Kulkarni et al. (:cite:`kulkarni2020deep`) incorporate
   labelled information into the VAE methodology in two ways. First, a
   modified architecture called the CVAE is used in which the encoder and
   generator of the VAE is not only conditioned on the input :math:`X`
   and latent vector :math:`z`, respectively, but also on the label
   :math:`Y`. The CVAE was introduced in previous papers
-  (:raw-latex:`\cite{sohn2015learning}`)
-  (:raw-latex:`\cite{dahmani2019conditional}`). Second, the authors add
+  (:cite:`sohn2015learning`)
+  (:cite:`dahmani2019conditional`). Second, the authors add
   a metric loss, specifically a multi-class N-pair loss
-  (:raw-latex:`\cite{sohn2016improved}`), in the overall loss function
+  (:cite:`sohn2016improved`), in the overall loss function
   of the model. While it is unclear how the CVAE technique would be
   adapted in a semi-supervised setting, as there is not a label
   :math:`Y` associated with each datapoint :math:`X`, we also experiment
@@ -172,7 +172,7 @@ VAEs with Metric Loss
   function.
 
 | Most recently, Grosnit et al.
-  (:raw-latex:`\citeyear{grosnit2021high}`) leverage a new training
+  (:cite:`grosnit2021high`) leverage a new training
   algorithm for combining VAEs and DML for Bayesian Optimization and
   said algorithm using simple, contrastive, and triplet metric losses.
   We look to build on this literature by also testing a combined VAE DML
@@ -180,7 +180,7 @@ VAEs with Metric Loss
   training regimen.
 
 | Lastly, though the paper does not discuss VAEs, it is worthwhile to
-  note Andresini et al.’s (:raw-latex:`\citeyear{ANDRESINI2021706}`)
+  note Andresini et al.’s (:cite:`ANDRESINI2021706`)
   combined approach to metric learning (specifically triplet loss) and
   autoencoders. For a dataset with two classes, two autoencoders are
   trained on only one class, so triplets can be formed using an anchor
@@ -288,7 +288,7 @@ Claim 1
   :math:`\alpha` is a hyperparameter which modulates the impact of the
   reconstruction loss on total loss for the DML autoencoder. The
   software tool used, Pytorch Lightning
-  (:raw-latex:`\cite{Falcon_PyTorch_Lightning_2019}`), used to construct
+  (:cite:`Falcon_PyTorch_Lightning_2019`), used to construct
   the models restricts not using all parameters in the computation of
   the loss for a given epoch; thus we have a semi-supervised stage
   consisting of the unsupervised and the supervised loss instead of
@@ -439,10 +439,10 @@ Datasets
 +++++++++
 
 Two datasets are used for evaluating the models. The first dataset is
-MNIST (:raw-latex:`\cite{lecun-mnisthandwrittendigit-2010}`), a very
+MNIST (:cite:`lecun-mnisthandwrittendigit-2010`), a very
 popular dataset in machine learning containing greyscale images of
 handwritten digits. The second dataset we use is the organ OrganAMNIST
-dataset from MedMNIST v2 (:raw-latex:`\cite{medmnistv2}`). This dataset
+dataset from MedMNIST v2 (:cite:`medmnistv2`). This dataset
 contains 2D slices from computed tomography images from the Liver Tumor
 Segmentation Benchmark – the labels correspond to the classification of
 11 different body organs. The decision to use a second dataset was
@@ -450,12 +450,12 @@ motivated because the as the claims are tested over more datasets, the
 results supporting the claims become more generalizable. The decision to
 use the OrganAMNIST dataset specifically is motivated in part due to the
 the Quinn Research Group working on similar tasks for biomedical imaging
-(:raw-latex:`\cite{Zain2020TowardsAU}`). It is also motivated in part
+(:cite:`Zain2020TowardsAU`). It is also motivated in part
 because OrganAMNIST is a more difficult dataset, at least for a the
 classfication task, as the leading accuracy for MNIST is .9991
-(:raw-latex:`\cite{DBLP:journals/corr/abs-2008-10400}`) while the
+(:cite:`DBLP:journals/corr/abs-2008-10400`) while the
 leading accuracy for OrganAMNIST is .951
-(:raw-latex:`\cite{medmnistv2}`). The MNIST and OrganAMNIST datasets are
+(:cite:`medmnistv2`). The MNIST and OrganAMNIST datasets are
 similar in dimensionality (1 x 28 x 28), number of samples (60,000 and
 58,850, respectively) and in that they are both greyscale.
 
@@ -479,12 +479,12 @@ shown, however, we only include the kNN classification output due to
 space constraints and the lack of meaningful difference between the
 output for each classifier. We finally measure the quality of the
 predicted labels :math:`\hat{Y}` using the Adjusted Mutual Information
-Score (AMI) (:raw-latex:`\cite{vinh2010information}`) and accuracy
+Score (AMI) (:cite:`vinh2010information``) and accuracy
 (which is still helpful but is also easier to interpret in some cases).
 This scoring metric is common in research that looks to evaluate
-clustering performance (:raw-latex:`\cite{zhu2021finding}`)
-(:raw-latex:`\cite{emmons2016analysis}`). We will be using sklearn’s
-implementation of AMI (:raw-latex:`\cite{scikit-learn}`). The
+clustering performance (:cite:`zhu2021finding`)
+(:cite:`emmons2016analysis`). We will be using sklearn’s
+implementation of AMI (:cite:`scikit-learn`). The
 performance of a classifier on the latent points intuitively can be used
 as a measure of quality of clustering. Each result shown in Table
 6.1–6.2 is the average of four identical experiments performed on the
