@@ -1,6 +1,28 @@
 :author: Nathan Safir
 :email: nssafir@gmail.com
-:institution: Institute for Artificial Intelligence
+:institution: Institute for Artificial Intelligence, University of Georgia, Athens, GA 30602 USA
+
+:author: Meekail Zain
+:email: meekail.zain@uga.edu
+:institution: Department of Computer Science, University of Georgia, Athens, GA 30602 USA
+
+:author: Curtis Godwin
+:email: cmgodwin263@gmail.com
+:institution: Institute for Artificial Intelligence, University of Georgia, Athens, GA 30602 USA
+
+:author: Eric Miller
+:email: EricMiller@uga.edu
+:institution: Institute for Artificial Intelligence, University of Georgia, Athens, GA 30602 USA
+
+:author: Bella Humphrey
+:email: isabelladhumphrey@gmail.com
+:institution: Department of Computer Science, University of Georgia, Athens, GA 30602 USA
+
+:author: Shannon P Quinn
+:email: spq@uga.edu
+:institution: Department of Computer Science, University of Georgia, Athens, GA 30602 USA
+:institution: Department of Cellular Biology, University of Georgia, Athens, GA 30602 USA
+
 :bibliography: ref
 
 ------------------------------------------------------------------
@@ -249,8 +271,10 @@ corresponds to a claim about how a specific part of the VAE training
 regime and loss function may be adapted to assist the performance of a
 DML method for a semi-supervised dataset.
 
-INSERT ALGO FIG
-
+.. figure:: figs/alg_base.PNGS
+   :scale: 45%
+   :figclass: w
+   :align: center
 
 Claim 1 
 +++++++++++++
@@ -486,12 +510,7 @@ clustering performance (:cite:`zhu2021finding`)
 (:cite:`emmons2016analysis`). We will be using sklearn’s
 implementation of AMI (:cite:`scikit-learn`). The
 performance of a classifier on the latent points intuitively can be used
-as a measure of quality of clustering. Each result shown in Table
-6.1–6.2 is the average of four identical experiments performed on the
-same hyperparameter configuration. The results in Table 6.3–6.5 are
-randomly sampled on four identical experiments performed on the same
-hyperparameter configuration, and each result in Table 6.6 corresponds
-to one experiment.
+as a measure of quality of clustering. 
 
 Claim 1
 +++++++++
