@@ -502,7 +502,7 @@ leading accuracy for OrganAMNIST is .951
 similar in dimensionality (1 x 28 x 28), number of samples (60,000 and
 58,850, respectively) and in that they are both greyscale.
 
-.. figure:: figs/cropped_datasets.PNG
+.. figure:: figs/cropped_datasets.png
    :scale: 45%
    :figclass: w
    :align: center
