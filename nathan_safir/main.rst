@@ -319,7 +319,10 @@ Claim 1
   solely a supervised stage, as the the supervised loss does not make
   use of the parameters in the decoder.
 
-INSERT ALGO FIG
+.. figure:: figs/alg_claim1.PNG
+   :scale: 45%
+   :figclass: w
+   :align: center
 
 Claim 2 
 +++++++++++++
@@ -381,7 +384,15 @@ spanning :math:`d` dimensions on a :math:`d`-dimensional hypersphere. KL
 Divergence is calculated with a monte carlo approximation for the GMM
 and analytically with the unit prior.
 
-INSERT ALGO FIG (AND MONTE CARLO ONE)
+.. figure:: figs/alg_claim2.PNG
+   :scale: 45%
+   :figclass: w
+   :align: center
+
+.. figure:: figs/alg_monte_carlo.PNG
+   :scale: 45%
+   :figclass: w
+   :align: center
 
 Claim 3 
 +++++++++++++
@@ -402,7 +413,15 @@ like each of the other modified DML models. The actual implementation
 belies the pseudocode algorithm slightly as it uses the VAE with
 VampPrior model instead of the vanilla VAE.
 
-INSERT ALGO FIG (AND PIC COMPARING THEM ALL)
+.. figure:: figs/alg_claim3.PNG
+   :scale: 45%
+   :figclass: w
+   :align: center
+
+.. figure:: figs/comparison_architectures.PNG
+   :scale: 45%
+   :figclass: w
+   :align: center
 
 Results
 ------------
