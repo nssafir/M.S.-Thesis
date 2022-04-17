@@ -271,7 +271,7 @@ corresponds to a claim about how a specific part of the VAE training
 regime and loss function may be adapted to assist the performance of a
 DML method for a semi-supervised dataset.
 
-.. figure:: figs/alg_base.PNGS
+.. figure:: figs/alg_base.PNG
    :scale: 45%
    :figclass: w
    :align: center
