@@ -176,12 +176,8 @@ negative class. The authors claim that this method, along with other
 benefits, do not suffer the convergence problems of many triplet loss
 DML architectures as the triplets are not randomly sampled.
 
-
-Preliminaries
---------------
-
 Deep Metric Learning (DML)
-++++++++++++++++++++++++++++
+----------------------------
 Metric learning attempts to create representations for data by
 training against the similarity or dissimilarity of samples. In a more
 technical sense, there are two notable functions in DML systems.
@@ -218,10 +214,8 @@ be used as a distance function in metric learning. The generalized
 If we have chosen :math:`f_{\theta}` (a neural network) and the distance
 function :math:`D` (the :math:`L_{2}` metric), the remaining component
 to be defined in a metric learning system is the loss function for
-training :math:`f`.
-
-Variational Autoencoders (VAEs)
-++++++++++++++++++++++++++++++++
+training :math:`f`. In practice, we will be using triplet loss (:cite:`schroff2015facenet`), 
+one of the most common metric learning loss functions.
 
 Methodology
 ------------
@@ -236,6 +230,15 @@ DML method for a semi-supervised dataset.
    :scale: 45%
    :figclass: w
    :align: center
+
+The general method we will take for creating modified DML models involves
+extending the training regimen to two phases, a supervised and unsupervised
+phase. In the supervised phase the modified DML model behaves identically
+to the base DML model, training on the same metric loss function. In the 
+unsupervised phase, the DML model will train against an unsupervised loss
+inspired by the VAE. This may require extra steps to be added to the DML 
+architecture. :math:`\alpha` is a hyperparameter which modulates the impact of the
+unsupervised on total loss for the DML autoencoder. 
 
 Claim 1 
 +++++++++++++
@@ -263,22 +266,8 @@ use only the labelled data and train given a metric loss
 :math:`L_{metric}` (see Algorithm 1). Our modified model DML
 Autoencoder will extend the DML model’s training regime by adding a
 decoder network which takes the latent point :math:`z` as input and
-produces an output :math:`\hat{x}`. The loss function is then modified
-such that there is a supervised loss :math:`L_{S}` which is identical
-to the metric loss :math:`L_{metric}` and an unsupervised loss that is
-identical to the reconstruction loss :math:`L_{U}`. Each epoch, the
-total loss alternates between the supervised and unsupervised loss,
-such :math:`L = (1 - \alpha) L_{S} + \alpha L_{U}` on odd number
-epochs and :math:`L = \alpha L_{U}` for even number epochs.
-:math:`\alpha` is a hyperparameter which modulates the impact of the
-reconstruction loss on total loss for the DML autoencoder. The
-software tool used, Pytorch Lightning
-(:cite:`Falcon_PyTorch_Lightning_2019`), used to construct
-the models restricts not using all parameters in the computation of
-the loss for a given epoch; thus we have a semi-supervised stage
-consisting of the unsupervised and the supervised loss instead of
-solely a supervised stage, as the the supervised loss does not make
-use of the parameters in the decoder.
+produces an output :math:`\hat{x}`. The unsupervised loss :math:`L_{U}`
+is equal to the reconstruction loss. 
 
 .. figure:: figs/alg_claim1.PNG
    :scale: 45%
@@ -303,21 +292,13 @@ performance, we can evaluate whether this inductive bias is helpful.
 Given a fully supervised dataset, we assume a standard DML system will
 use only the labelled data and train given a metric loss
 :math:`L_{metric}`. Our modified model will extend the DML system’s
-training regime by adding a KL divergence term to the loss which
+training regime by setting hte unsupervised loss to a KL divergence term that
 measures the difference between posterior distributions and a prior
 distribution. It should also be noted that, like the VAE encoder, we
 will map the input not to a latent point but to a latent distribution.
 The latent point is stochastically sampled from the latent
 distribution during training. Mapping the input to a distribution
 instead of a point will allow us to calculate the KL divergence.
-
-The loss function is then modified such that the total loss :math:`L`
-is equal to a weighted sum between the metric loss term
-:math:`L_{metric}` and the KL divergence term :math:`L_{KL}`. As is
-true in the previous section, the total loss alternates between the
-supervised and unsupervised loss, such
-:math:`L = (1 - \alpha) L_{S} + \alpha L_{U}` on odd number epochs and
-:math:`L = \alpha L_{U}` for even number epochs.
 
 In practice, we will be evaluating a DML model with a unit prior and a
 DML model with a mixture of gaussians (GMM) prior. The latter model
@@ -367,12 +348,8 @@ data; the proposed methodology will optimize both tasks simultaneously
 to learn from both supervised and unsupervised data.
 
 The MetricVAE implementation we create jointly optimizes the VAE task
-and DML task on the VAE latent space. Across epochs, the MetricVAE model
-alternates between training only the unsupervised task :math:`L_{U}` and
-the semi-supervised task :math:`\alpha * L_{U} + (1 - \alpha) * L_{S}`,
-like each of the other modified DML models. The actual implementation
-belies the pseudocode algorithm slightly as it uses the VAE with
-VampPrior model instead of the vanilla VAE.
+and DML task on the VAE latent space. The unsupervised loss is set to the VAE loss. 
+The implementation uses the VAE with VampPrior model instead of the vanilla VAE.
 
 .. figure:: figs/alg_claim3.PNG
    :scale: 45%
@@ -387,13 +364,12 @@ VampPrior model instead of the vanilla VAE.
 Results
 ------------
 
+Experimental Configuration
+++++++++++++++++++++++++++++
 Each set of experiments shares a similar hyperparameter search space.
 Below we describe the hyperparameters that are included in the search
 space of each experiment. We also discuss the hardware used and the the
 evaluation method.
-
-Experimental Configuration
-++++++++++++++++++++++++++++
 
 Learning Rate (lr)
 ===================
