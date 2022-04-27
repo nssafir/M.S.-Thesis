@@ -89,7 +89,7 @@ in semi supervised tasks. We draw on previous literature to find not
 only prior attempts at this specific research goal but also work in
 adjacent research questions that proves insightful. In this review of
 the literature, we discuss previous related work in the areas of
-Semi-Supervised Metric Learning, Semi-supervised VAEs, and VAEs with
+Semi-Supervised Metric Learning and VAEs with
 Metric Losses.
 
 Semi-Supervised Metric Learning
@@ -127,42 +127,6 @@ approach. Instead, the proposed model looks to approximate "soft"
 pseudo-labels for unlabelled data from the metric learning similarity
 measure between the embedding of unlabelled data and the center of
 each input of each class of the labelled data.
-
-Semi-supervised VAEs
-+++++++++++++++++++++
-
-There have been previous attempts at incorporating labelled
-information into the VAE framework. As discussed before, the VAE
-training regimen does not incorporate training labels – creating a
-training regimen for the VAE which does learn from labels is not
-straightforward. An early solution proposed to this problem are Kingma
-and Welling’s proposed M1 and M2 models
-(:cite:`kingma2014autoencoding`). The M1 model trains
-the VAE on data :math:`X` without the labels :math:`Y` to produce
-encodings :math:`Z` and then trains a separate model on a supervised
-task with the data and labels pair :math:`(Z, Y)`. The M1 model does
-not actually train the underlying VAE differently, so the authors
-propose an M2 model, which differs from the vanilla VAE in that there
-are two encoders which produce not only the latent vector :math:`z`
-for each datapoint :math:`x` but also a predicted label :math:`y'`,
-both of which the decoder receives as input. The classification task
-(i.e. the encoder’s prediction :math:`y'`) is trained jointly with the
-regular VAE loss, as is consistent with the authors’ new derivation of
-the VAE ELBO.
-
-A more recent approach to the semi-supervised VAEs discourages
-producing an explicit label embedding within the latent space. Joy et
-al. (:cite:`joy2020capturing`) propose a model which
-encodes several latent vectors :math:`z_{1}, z_{2}, ... z_{n}` for
-:math:`n` labelled characteristics of the image. For instance, if the
-dataset was over pictures of people, one characteristic may be if the
-person was smiling, if they were blonde, etc. For each characteristic
-:math:`c_{i}`, a classifier is trained to predict :math:`y_{i}` from
-only the latent vector :math:`z_{i}`. The authors argue that this is a
-superior training approach than creating explicit label embeddings
-with an encoder network as binary labels such as "smiling/not smiling"
-are oftentimes not actually binary (ex. a picture may show the subject
-slightly smiling or greatly smiling)
 
 VAEs with Metric Loss
 ++++++++++++++++++++++
@@ -254,10 +218,7 @@ be used as a distance function in metric learning. The generalized
 If we have chosen :math:`f_{\theta}` (a neural network) and the distance
 function :math:`D` (the :math:`L_{2}` metric), the remaining component
 to be defined in a metric learning system is the loss function for
-training :math:`f`. The following section provides a survey of the
-development of and differences between notable training objectives in
-metric learning, which for brevity we will refer to as *metric loss
-functions* or *metric losses*.
+training :math:`f`.
 
 Variational Autoencoders (VAEs)
 ++++++++++++++++++++++++++++++++
