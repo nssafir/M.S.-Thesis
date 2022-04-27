@@ -165,17 +165,6 @@ We look to build on this literature by also testing a combined VAE DML
 architecture on more recent metric losses, albeit using a simpler
 training regimen.
 
-Lastly, though the paper does not discuss VAEs, it is worthwhile to
-note Andresini et al.’s (:cite:`ANDRESINI2021706`)
-combined approach to metric learning (specifically triplet loss) and
-autoencoders. For a dataset with two classes, two autoencoders are
-trained on only one class, so triplets can be formed using an anchor
-point sampled from the dataset, the reconstruction of the autoencoder
-for the positive class, and the autoencoder for the triplet of the
-negative class. The authors claim that this method, along with other
-benefits, do not suffer the convergence problems of many triplet loss
-DML architectures as the triplets are not randomly sampled.
-
 Deep Metric Learning (DML)
 ----------------------------
 Metric learning attempts to create representations for data by
@@ -451,8 +440,7 @@ similar in dimensionality (1 x 28 x 28), number of samples (60,000 and
 Hardware
 =========
 
-Every experiment discussed was run on the Quinn Research Group’s
-Rocinante server, which contains 4 NVIDIA GeForce RTX 2080 Ti GPUs.
+The server used for running the experiments contains 4 NVIDIA GeForce RTX 2080 Ti GPUs.
 Using the Weights and Biases sweep API, we parallelize the experiments
 such that four experiments run simletaneously on one GPU each.
 
