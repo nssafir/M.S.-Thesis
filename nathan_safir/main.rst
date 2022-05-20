@@ -519,7 +519,7 @@ and a DML with a unit prior (the distribution N(0, 1)).
 In Table 3, it is very evident that across both datasets, the DML models with any prior distribution all
 devolve to the null model (i.e. the classifier is no better than random selection). From the visualilzations of
 the latent embeddings, we see that the embedded data for the DML models with priors appears completely
-random (figure 6.2). In the case of the GMM prior, it also does not appear to take on the shape of the
+random. In the case of the GMM prior, it also does not appear to take on the shape of the
 prior or reflect the number of components in the prior. This may be due to the training routine of the
 DML models. As the KL divergence loss, which can be said to "fit" the embeddings to the prior, trains
 on alternating epochs with the supervised DML loss, it is possible that the two losses are not balanced
