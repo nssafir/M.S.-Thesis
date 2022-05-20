@@ -465,14 +465,63 @@ implementation of AMI (:cite:`scikit-learn`). The
 performance of a classifier on the latent points intuitively can be used
 as a measure of quality of clustering. 
 
-Claim 1
-+++++++++
+Claim 1 Results: Benefits of Reconstruction Loss
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+In evaluating the first claim, we compare the performance of the plain DML model to the DML Autoencoder model. 
+We do so by comparing the performance of the plain DML system and the DML Autoencoder across a search space
+containing the lsdim, alpha, and pl% hyperparameters and both datasets.
 
-Claim 2
-+++++++++
+In tables ____ and ____, we observe that for relatively small amounts of labelled samples (the partial labels
+percentages of 0.01 and 0.1 correspond to 6 and 60 labelled samples respectively), the DML Autoencoder severely
+outperforms the DML model. However, when the number of labelled samples increases (the partial labels
+percentage of 10 correspond to 6000 labelled samples respectively), the DML model significantly 
+outperforms the DML Autoencoder. This trend is not too surprising, as when there is sufficient data to train
+unsupervised methods and insufficient data to train supervised method, as is the case for the 0.01 and 0.1
+partial label percentages, the unsupervised method will likely perform better.
 
-Claim 3
-+++++++++
+The data looks to show that the claim that adding a reconstruction loss to a DML system can improve
+the quality of clustering in the latent representations on a semi-supervised dataset when there are small
+amounts (roughly less than 100 samples) of labelled data and a sufficient quantity of unlabelled data.
+But an important caveat is that it is not convincing that the DML Autoencoder effectively combined
+the unsupervised and supervised losses to create a superior model, as a plain autoencoder (i.e. the DML
+Autoencoder with α = 1) outperforms the DML for the partial labels percentage of or less than 0.1% and
+underperforms the DML for the partial labels percentage of 10%.
+
+INSERT 2 TABLES
+
+
+Claim 2 Results: Incorporating Inductive Bias with a Prior
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+In evaluating the second claim, we compare the performance of the plain DML model to the DML with
+a unit prior and a DML with a GMM prior. The DML prior with the GMM prior will have 2^2 = 4 gaussian
+components when lsdim = 2 and 2^4 = 16 components when lsdim = 4. Our broad intention is to see 
+if changing the shape (specifically the number of components) of the prior can induce bias by affecting
+the pattern of embeddings. We hypothesize that when the GMM prior contains n components and n is
+slightly greater than or equal to the number of classes, each class will cluste raround one of the prior components.
+We will test this for the GMM prior with 16 components (lsdim = 4) as both the MNIST and MedMNIST
+datasets have 10 classes. We are unable to set the number of GMM components to 10 as our GMM sampling 
+method only allows for the number of components to equal a power of 2. Bseline models include a plain DML
+and a DML with a unit prior (the distribution N(0, 1)).
+
+In the data, it is very evident that across both datasets, the DML models with any prior distribution all
+devolve to the null model (i.e. the classifier is no better than random selection). From the visualilzations of
+the latent embeddings, we see that the embedded data for the DML models with priors appears completely
+random (figure 6.2). In the case of the GMM prior, it also does not appear to take on the shape of the
+prior or reflect the number of components in the prior. This may be due to the training routine of the
+DML models. As the KL divergence loss, which can be said to "fit" the embeddings to the prior, trains
+on alternating epochs with the supervised DML loss, it is possible that the two losses are not balanced
+correctly during the training process. From the discussed results, it is fair to state that adding a prior
+distribution to a DML model through training the model on the KL divergence between the prior and
+approximated posterior distributions on alternating epochs does is not an effective way to induce bias in
+the latent space.
+
+INSERT TABLE AND PICTURE
+
+
+Claim 3 Results: Jointly Optimizing DML with VAE
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+INSERT GRAPH AND PICTURE
 
 Conclusion
 ------------
