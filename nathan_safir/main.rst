@@ -471,7 +471,7 @@ In evaluating the first claim, we compare the performance of the plain DML model
 We do so by comparing the performance of the plain DML system and the DML Autoencoder across a search space
 containing the lsdim, alpha, and pl% hyperparameters and both datasets.
 
-In tables ____ and ____, we observe that for relatively small amounts of labelled samples (the partial labels
+In Table 1 and Table 2, we observe that for relatively small amounts of labelled samples (the partial labels
 percentages of 0.01 and 0.1 correspond to 6 and 60 labelled samples respectively), the DML Autoencoder severely
 outperforms the DML model. However, when the number of labelled samples increases (the partial labels
 percentage of 10 correspond to 6000 labelled samples respectively), the DML model significantly 
@@ -487,7 +487,18 @@ the unsupervised and supervised losses to create a superior model, as a plain au
 Autoencoder with α = 1) outperforms the DML for the partial labels percentage of or less than 0.1% and
 underperforms the DML for the partial labels percentage of 10%.
 
-INSERT 2 TABLES
+.. figure:: figs/claim_1_mnist.png
+   :scale: 45%
+   :figclass: w
+   :align: center
+   Table 1: Comparison of the DML (left) and DML Autoencoder (right) models for the MNIST dataset.
+   Bolded values indicate best performance for each partial labels percentage partition (pl%).
+   
+.. figure:: figs/claim_1_medmnist.png
+   :scale: 45%
+   :figclass: w
+   :align: center
+   Table 2: Comparison of the DML (left) and DML Autoencoder (right) models for the MEDMNIST dataset..
 
 
 Claim 2 Results: Incorporating Inductive Bias with a Prior
@@ -503,7 +514,7 @@ datasets have 10 classes. We are unable to set the number of GMM components to 1
 method only allows for the number of components to equal a power of 2. Bseline models include a plain DML
 and a DML with a unit prior (the distribution N(0, 1)).
 
-In the data, it is very evident that across both datasets, the DML models with any prior distribution all
+In Table 3, it is very evident that across both datasets, the DML models with any prior distribution all
 devolve to the null model (i.e. the classifier is no better than random selection). From the visualilzations of
 the latent embeddings, we see that the embedded data for the DML models with priors appears completely
 random (figure 6.2). In the case of the GMM prior, it also does not appear to take on the shape of the
@@ -515,13 +526,59 @@ distribution to a DML model through training the model on the KL divergence betw
 approximated posterior distributions on alternating epochs does is not an effective way to induce bias in
 the latent space.
 
-INSERT TABLE AND PICTURE
+.. figure:: figs/claim_2_table.png
+   :scale: 45%
+   :figclass: w
+   :align: center
+   Table 3: Comparison of the DML model (left) and the DML with prior models with a unit gaussian
+   prior (center) and GMM prior (right) models for the MNIST dataset.
+   
+.. figure:: figs/claim_2_ls.png
+   :scale: 45%
+   :figclass: w
+   :align: center
+   Comparison of latent spaces for DML with unit prior (left) and DML with GMM prior
+   containing 4 components (right) for lsdim = 2 on OrganAMNIST dataset. The gaussian components
+   are shown as black with the raidus equal to variance (1). There appears to be no evidence of the distinct
+   gaussian components in the latent space on the right. It does appear that the unit prior may regularize the
+   magnitude of the latent vectors
 
 
 Claim 3 Results: Jointly Optimizing DML with VAE
 ++++++++++++++++++++++++++++++++++++++++++++++++
 
-INSERT GRAPH AND PICTURE
+To evaluate the third claim, we compare the performance of DMLs to MetricVAEs (defined in the previous chapter)
+across several metric losses. We run experiments for triplet loss, supervised loss, and center
+loss DML and MetricVAE models. To judge whether the claim is true, we will assess whether the model
+performance improves for the MetricVAE over the DML for the same metric loss and other hyper parameters.
+
+Like the previous claim, the proposed MetricVAE model does not perform better than the null model. 
+As with claim 2, it is possible this is because the training routine of alternating between supervised loss (in this case, metric loss) and
+unsupervised (in this case, VAE loss) is not optimal for training the model.
+
+We have trained a seperate combined VAE and DML model which trains on both the unsupervised and supervised loss
+each epoch instead of alternating between the two each epoch.
+In the results for this model, we see that an alpha value of over zero (i.e. incorporating both the supervised metric loss into the
+overall MVAE loss function) can help improve performance especially among lower dimensionalities.
+Given our analysis of the data, we see that incorporating the DML loss to the VAE is potentially
+helpful, but only when training the unsupervised and supervised losses jointly. Even in that case, it is
+unclear whether the MVAE performs better than the corresponding DML model even if it does perform
+better than the corresponding VAE model. 
+
+.. figure:: figs/claim_3_graph.png
+   :scale: 45%
+   :figclass: w
+   :align: center
+   Graph of reconstruction loss (componenet of unsupervised loss) of MVAE across epochs. The
+   unsupervised loss does not converge despite being trained on each epoch.
+   
+.. figure:: figs/claim_3_table.png
+   :scale: 45%
+   :figclass: w
+   :align: center
+   Table 6.6: Experiments performed on MVAE architecture across fully labelled MNIST dataset that trains
+   on objective function L = LU + γ ∗LS on fully supervised dataset. The best results for the classification
+   accuracy on the MVAE embeddings in a given latent-dimensionality are bolded.
 
 Conclusion
 ------------
