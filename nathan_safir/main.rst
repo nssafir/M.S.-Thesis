@@ -491,6 +491,7 @@ underperforms the DML for the partial labels percentage of 10%.
    :scale: 45%
    :figclass: w
    :align: center
+   
    Table 1: Comparison of the DML (left) and DML Autoencoder (right) models for the MNIST dataset.
    Bolded values indicate best performance for each partial labels percentage partition (pl%).
    
@@ -498,6 +499,7 @@ underperforms the DML for the partial labels percentage of 10%.
    :scale: 45%
    :figclass: w
    :align: center
+   
    Table 2: Comparison of the DML (left) and DML Autoencoder (right) models for the MEDMNIST dataset..
 
 
@@ -530,6 +532,7 @@ the latent space.
    :scale: 45%
    :figclass: w
    :align: center
+   
    Table 3: Comparison of the DML model (left) and the DML with prior models with a unit gaussian
    prior (center) and GMM prior (right) models for the MNIST dataset.
    
@@ -537,6 +540,7 @@ the latent space.
    :scale: 45%
    :figclass: w
    :align: center
+   
    Comparison of latent spaces for DML with unit prior (left) and DML with GMM prior
    containing 4 components (right) for lsdim = 2 on OrganAMNIST dataset. The gaussian components
    are shown as black with the raidus equal to variance (1). There appears to be no evidence of the distinct
@@ -569,6 +573,7 @@ better than the corresponding VAE model.
    :scale: 45%
    :figclass: w
    :align: center
+   
    Graph of reconstruction loss (componenet of unsupervised loss) of MVAE across epochs. The
    unsupervised loss does not converge despite being trained on each epoch.
    
@@ -576,7 +581,8 @@ better than the corresponding VAE model.
    :scale: 45%
    :figclass: w
    :align: center
-   Table 6.6: Experiments performed on MVAE architecture across fully labelled MNIST dataset that trains
+   
+   Table 4: Experiments performed on MVAE architecture across fully labelled MNIST dataset that trains
    on objective function L = LU + γ ∗LS on fully supervised dataset. The best results for the classification
    accuracy on the MVAE embeddings in a given latent-dimensionality are bolded.
 
