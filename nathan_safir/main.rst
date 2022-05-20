@@ -487,14 +487,14 @@ the unsupervised and supervised losses to create a superior model, as a plain au
 Autoencoder with α = 1) outperforms the DML for the partial labels percentage of or less than 0.1% and
 underperforms the DML for the partial labels percentage of 10%.
 
-.. figure:: figs/claim_1_mnist.png
+.. figure:: figs/claim_1_mnist.PNG
    :scale: 45%
    :figclass: w
    :align: center
    Table 1: Comparison of the DML (left) and DML Autoencoder (right) models for the MNIST dataset.
    Bolded values indicate best performance for each partial labels percentage partition (pl%).
    
-.. figure:: figs/claim_1_medmnist.png
+.. figure:: figs/claim_1_medmnist.PNG
    :scale: 45%
    :figclass: w
    :align: center
@@ -526,14 +526,14 @@ distribution to a DML model through training the model on the KL divergence betw
 approximated posterior distributions on alternating epochs does is not an effective way to induce bias in
 the latent space.
 
-.. figure:: figs/claim_2_table.png
+.. figure:: figs/claim_2_table.PNG
    :scale: 45%
    :figclass: w
    :align: center
    Table 3: Comparison of the DML model (left) and the DML with prior models with a unit gaussian
    prior (center) and GMM prior (right) models for the MNIST dataset.
    
-.. figure:: figs/claim_2_ls.png
+.. figure:: figs/claim_2_ls.PNG
    :scale: 45%
    :figclass: w
    :align: center
@@ -565,14 +565,14 @@ helpful, but only when training the unsupervised and supervised losses jointly. 
 unclear whether the MVAE performs better than the corresponding DML model even if it does perform
 better than the corresponding VAE model. 
 
-.. figure:: figs/claim_3_graph.png
+.. figure:: figs/claim_3_graph.PNG
    :scale: 45%
    :figclass: w
    :align: center
    Graph of reconstruction loss (componenet of unsupervised loss) of MVAE across epochs. The
    unsupervised loss does not converge despite being trained on each epoch.
    
-.. figure:: figs/claim_3_table.png
+.. figure:: figs/claim_3_table.PNG
    :scale: 45%
    :figclass: w
    :align: center
